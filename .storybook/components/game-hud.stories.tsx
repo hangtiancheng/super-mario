@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { GameHud } from "./game-hud";
+import { GameHud } from "@/components/game-hud";
 
 const meta: Meta<typeof GameHud> = {
   args: {

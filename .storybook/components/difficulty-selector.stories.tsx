@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { DifficultySelector } from "./difficulty-selector";
+import { DifficultySelector } from "@/components/difficulty-selector";
 
 function handleDifficultyChange(): void {}
 

@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { firstLevel } from "../constants";
-import type { GameState } from "../types";
-import { createIdleInput, createInitialGameState } from "../utils";
-import type { GameSimulation, KeyboardInputControls } from "../hooks";
-import { GameStage } from "./game-stage";
+import { firstLevel } from "@/constants";
+import type { GameState } from "@/types";
+import { createIdleInput, createInitialGameState } from "@/utils";
+import type { GameSimulation, KeyboardInputControls } from "@/hooks";
+import { GameStage } from "@/components/game-stage";
 
 function handleRestart(): void {}
 

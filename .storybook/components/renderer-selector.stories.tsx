@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { RendererSelector } from "./renderer-selector";
+import { RendererSelector } from "@/components/renderer-selector";
 
 function handleRendererChange(): void {}
 

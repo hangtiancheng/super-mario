@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import type { ReactElement } from "react";
 
-import { TransitionOverlay } from "./transition-overlay";
+import { TransitionOverlay } from "@/components/transition-overlay";
 
 function handleRestart(): void {}
 

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import type { LeaderboardEntry } from "../schema";
-import { LeaderboardPanel } from "./leaderboard-panel";
+import type { LeaderboardEntry } from "@/schema";
+import { LeaderboardPanel } from "@/components/leaderboard-panel";
 
 const entries: LeaderboardEntry[] = [
   {
