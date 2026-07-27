@@ -98,6 +98,6 @@ function buildPipe(shape: SceneryShape): Graphics {
   const graphic = new Graphics();
   traceTopRoundedRect(graphic, shape.x, shape.y, shape.width, shape.height, 12);
   return graphic
-    .fill({ color: shape.color })
+    .fill({ alpha: shape.alpha, color: shape.color })
     .stroke({ color: palette.slate950, width: 4 });
 }

@@ -14,6 +14,12 @@ export function playBgm(): void {
       volume: 0.35,
       html5: true,
       autoplay: true,
+      // A failed load would otherwise leave bgm stuck in a permanent
+      // non-loaded state with no way to retry.
+      onloaderror: (): void => {
+        bgm?.unload();
+        bgm = null;
+      },
     });
     return;
   }

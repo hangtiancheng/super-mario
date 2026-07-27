@@ -21,19 +21,20 @@ export function traceTopRoundedRect(
 }
 
 // Traces dash segments along the edges of a rect (CSS border-dashed).
+const DASH = 6;
+const GAP = 5;
+
 export function traceDashedRect(
   graphic: Graphics,
   x: number,
   y: number,
   width: number,
   height: number,
-  dash: number = 6,
-  gap: number = 5,
 ): Graphics {
-  traceDashedLine(graphic, x, y, width, dash, gap, true);
-  traceDashedLine(graphic, x, y + height, width, dash, gap, true);
-  traceDashedLine(graphic, x, y, height, dash, gap, false);
-  traceDashedLine(graphic, x + width, y, height, dash, gap, false);
+  traceDashedLine(graphic, x, y, width, true);
+  traceDashedLine(graphic, x, y + height, width, true);
+  traceDashedLine(graphic, x, y, height, false);
+  traceDashedLine(graphic, x + width, y, height, false);
   return graphic;
 }
 
@@ -42,12 +43,10 @@ function traceDashedLine(
   x: number,
   y: number,
   length: number,
-  dash: number,
-  gap: number,
   horizontal: boolean,
 ): void {
-  for (let offset = 0; offset < length; offset += dash + gap) {
-    const end = Math.min(offset + dash, length);
+  for (let offset = 0; offset < length; offset += DASH + GAP) {
+    const end = Math.min(offset + DASH, length);
     if (horizontal) {
       graphic.moveTo(x + offset, y).lineTo(x + end, y);
     } else {

@@ -6,7 +6,7 @@ const config: StorybookConfig = {
     name: "@storybook/react-vite",
     options: {},
   },
-  stories: ["./*.stories.tsx"],
+  stories: ["./components/*.stories.tsx"],
 };
 
 export default config;

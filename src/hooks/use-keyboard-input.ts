@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import type { KeyboardEvent, RefObject } from "react";
 
 import type { GameInput } from "@/types";
@@ -49,7 +49,16 @@ export function useKeyboardInput(): KeyboardInputControls {
     };
   }, []);
 
-  return { inputRef, onBlur, onKeyDown, onKeyUp, reset };
+  return useMemo(
+    (): KeyboardInputControls => ({
+      inputRef,
+      onBlur,
+      onKeyDown,
+      onKeyUp,
+      reset,
+    }),
+    [onBlur, onKeyDown, onKeyUp, reset],
+  );
 }
 
 function updateInput(

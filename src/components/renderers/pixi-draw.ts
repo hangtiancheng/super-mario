@@ -147,6 +147,8 @@ export function drawPlayer(graphic: Graphics, state: GameState): void {
   graphic
     .roundRect(7, 24, 20, 12, 6)
     .fill({ color: theme.face })
+    // Pants intentionally overflow the 34x48 body: they mirror the DOM
+    // sprite, whose w-8 pants div overflows its parent the same way.
     .roundRect(4, 40, 32, 12, 2)
     .fill({ color: theme.pants });
   graphic.alpha = getInvulnerabilityOpacity(player, state.stats.elapsedMs);

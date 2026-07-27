@@ -23,11 +23,10 @@ dist-ssr
 *.sln
 *.sw?
 
-dist-html/
-dist3/
-
 storybook-static/
 **/storybook-static/
 
 .playwright-cli/
 **/.playwright-cli/
+test-results/
+playwright-report/
