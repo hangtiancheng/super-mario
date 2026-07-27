@@ -1,14 +1,7 @@
 import type { GameState } from "../types";
 
 export type GameAudioEvent =
-  | "break"
-  | "coin"
-  | "hit"
-  | "jump"
-  | "loss"
-  | "start"
-  | "stomp"
-  | "win";
+  "break" | "coin" | "hit" | "jump" | "loss" | "start" | "stomp" | "win";
 
 export interface ToneProfile {
   delay: number;

@@ -28,23 +28,21 @@ export function RendererSelector({
         Renderer
       </p>
       <div className="flex gap-2">
-        {rendererOptions.map(
-          (option: RendererOption): ReactElement => (
-            <button
-              className={clsx(
-                "rounded-lg border px-3 py-1.5 text-xs font-black tracking-[0.14em] uppercase transition",
-                option.value === selectedRenderer
-                  ? "border-violet-300 bg-violet-300 text-slate-950"
-                  : "border-violet-300/40 text-violet-100 hover:bg-violet-300/20",
-              )}
-              key={option.value}
-              onClick={(): void => onChange(option.value)}
-              type="button"
-            >
-              {option.label}
-            </button>
-          ),
-        )}
+        {rendererOptions.map((option: RendererOption): ReactElement => (
+          <button
+            className={clsx(
+              "rounded-lg border px-3 py-1.5 text-xs font-black tracking-[0.14em] uppercase transition",
+              option.value === selectedRenderer
+                ? "border-violet-300 bg-violet-300 text-slate-950"
+                : "border-violet-300/40 text-violet-100 hover:bg-violet-300/20",
+            )}
+            key={option.value}
+            onClick={(): void => onChange(option.value)}
+            type="button"
+          >
+            {option.label}
+          </button>
+        ))}
       </div>
     </div>
   );

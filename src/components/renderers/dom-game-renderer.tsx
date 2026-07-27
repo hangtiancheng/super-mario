@@ -41,19 +41,15 @@ export function DomGameRenderer({
         worldWidth={state.level.width}
       />
       <div className="absolute top-0 left-0" style={worldStyle}>
-        {visible.platforms.map(
-          (platform: Platform): ReactElement => (
-            <MemoPlatformSprite key={platform.id} platform={platform} />
-          ),
-        )}
+        {visible.platforms.map((platform: Platform): ReactElement => (
+          <MemoPlatformSprite key={platform.id} platform={platform} />
+        ))}
         {visible.coins.map((coin: Coin): ReactElement | null =>
           coin.collected ? null : <MemoCoinSprite coin={coin} key={coin.id} />,
         )}
-        {visible.enemies.map(
-          (enemy: Enemy): ReactElement => (
-            <MemoEnemySprite enemy={enemy} key={enemy.id} />
-          ),
-        )}
+        {visible.enemies.map((enemy: Enemy): ReactElement => (
+          <MemoEnemySprite enemy={enemy} key={enemy.id} />
+        ))}
         <ParticleLayer
           particles={state.particles}
           reducedMotion={reducedMotion}

@@ -59,11 +59,9 @@ function SceneryLayer({
       className="absolute top-0 left-0"
       style={getLayerStyle(cameraX, speed, worldWidth, reducedMotion)}
     >
-      {shapes.map(
-        (shape: SceneryShape): ReactElement => (
-          <SceneryShapeSprite key={shape.id} shape={shape} />
-        ),
-      )}
+      {shapes.map((shape: SceneryShape): ReactElement => (
+        <SceneryShapeSprite key={shape.id} shape={shape} />
+      ))}
     </div>
   );
 }

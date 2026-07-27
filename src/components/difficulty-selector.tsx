@@ -20,24 +20,22 @@ export function DifficultySelector({
         Difficulty
       </p>
       <div className="grid grid-cols-2 gap-2">
-        {difficultyOptions.map(
-          (option: DifficultyOption): ReactElement => (
-            <button
-              aria-pressed={option.difficulty === difficulty}
-              className={getButtonClass(option.difficulty === difficulty)}
-              key={option.difficulty}
-              onClick={(): void => onChange(option.difficulty)}
-              type="button"
-            >
-              <span className="text-xs font-black tracking-[0.14em] uppercase">
-                {option.label}
-              </span>
-              <span className="ml-1 text-[0.6rem] font-bold opacity-70">
-                x{option.multiplier} &middot; {option.lives}hp
-              </span>
-            </button>
-          ),
-        )}
+        {difficultyOptions.map((option: DifficultyOption): ReactElement => (
+          <button
+            aria-pressed={option.difficulty === difficulty}
+            className={getButtonClass(option.difficulty === difficulty)}
+            key={option.difficulty}
+            onClick={(): void => onChange(option.difficulty)}
+            type="button"
+          >
+            <span className="text-xs font-black tracking-[0.14em] uppercase">
+              {option.label}
+            </span>
+            <span className="ml-1 text-[0.6rem] font-bold opacity-70">
+              x{option.multiplier} &middot; {option.lives}hp
+            </span>
+          </button>
+        ))}
       </div>
     </div>
   );

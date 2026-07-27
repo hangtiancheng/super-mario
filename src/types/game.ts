@@ -10,13 +10,7 @@ export type PlatformTone = "breakable" | "mario" | "grass" | "ground";
 export type PlatformMotionAxis = "x" | "y";
 
 export type PlayerAnimation =
-  | "celebrate"
-  | "fall"
-  | "hurt"
-  | "idle"
-  | "jump"
-  | "run-one"
-  | "run-two";
+  "celebrate" | "fall" | "hurt" | "idle" | "jump" | "run-one" | "run-two";
 
 export type EnemyType = "flyer" | "hopper" | "walker";
 

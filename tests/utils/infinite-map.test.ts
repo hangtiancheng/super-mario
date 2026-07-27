@@ -40,9 +40,10 @@ const baseLevel: LevelData = {
 };
 
 const platforms: Platform[] = [...baseLevel.platforms];
-const coins: Coin[] = baseLevel.coins.map(
-  (coin): Coin => ({ ...coin, collected: false }),
-);
+const coins: Coin[] = baseLevel.coins.map((coin): Coin => ({
+  ...coin,
+  collected: false,
+}));
 const enemies: Enemy[] = [...baseLevel.enemies];
 
 describe("extendInfiniteWorld", (): void => {

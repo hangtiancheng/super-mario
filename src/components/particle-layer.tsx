@@ -15,18 +15,16 @@ export function ParticleLayer({
   const visibleParticles = reducedMotion ? particles.slice(0, 4) : particles;
   return (
     <>
-      {visibleParticles.map(
-        (particle: Particle): ReactElement => (
-          <div
-            className={clsx(
-              "absolute rounded-full border-2 border-slate-950",
-              getParticleClass(particle.kind),
-            )}
-            key={particle.id}
-            style={getParticleStyle(particle)}
-          />
-        ),
-      )}
+      {visibleParticles.map((particle: Particle): ReactElement => (
+        <div
+          className={clsx(
+            "absolute rounded-full border-2 border-slate-950",
+            getParticleClass(particle.kind),
+          )}
+          key={particle.id}
+          style={getParticleStyle(particle)}
+        />
+      ))}
     </>
   );
 }
