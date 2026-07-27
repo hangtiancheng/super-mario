@@ -12,13 +12,16 @@
     "lint:fix": "eslint ./ --fix",
     "typecheck": "tsc -b --noEmit",
     "preview": "vite preview",
+    "preview:f": "vite preview --host 127.0.0.1 --port 4173 --strictPort",
     "test": "vitest run",
     "test:watch": "vitest",
     "e2e": "playwright test",
     "playwright": "playwright install",
     "format": "prettier -w ./",
     "git:commit": "git add -A && git commit -m \"feat: Introduce new features\"",
-    "git:push": "pnpm git:commit && git push origin main"
+    "git:commit:ci": "git add -A && git commit -m \"ci: Deploy swifty-mario\"",
+    "git:push": "pnpm git:commit && git push origin main",
+    "git:push:ci": "pnpm git:commit:ci && git push origin main"
   },
   "license": "MIT",
   "dependencies": {

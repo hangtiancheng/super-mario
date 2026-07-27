@@ -4,7 +4,7 @@ test.describe("fullscreen route", (): void => {
   test("exposes the game stage as an application region", async ({
     page,
   }): Promise<void> => {
-    await page.goto("/fullscreen");
+    await page.goto("./fullscreen");
     await expect(
       page.getByRole("application", { name: /swifty mario game stage/i }),
     ).toBeVisible();
@@ -13,7 +13,7 @@ test.describe("fullscreen route", (): void => {
   test("offers an exit-fullscreen link back to home", async ({
     page,
   }): Promise<void> => {
-    await page.goto("/fullscreen");
+    await page.goto("./fullscreen");
     const exitLink = page.getByRole("link", {
       name: /exit fullscreen/i,
     });

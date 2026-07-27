@@ -14,7 +14,11 @@ const vendorChunkMap: ReadonlyArray<readonly [string, string]> = [
 
 const releaseId = `${packageJson.name}@${packageJson.version}`;
 
-export default defineConfig({
+// Build output is deployed to https://hangtiancheng.github.io/swifty-mario/.
+// Preview serves that built output, so it must share the base; only the
+// dev server runs at /.
+export default defineConfig(({ command, isPreview }) => ({
+  base: command === "build" || isPreview ? "/swifty-mario/" : "/",
   build: {
     rollupOptions: {
       output: {
@@ -41,4 +45,4 @@ export default defineConfig({
       "@": resolve(import.meta.dirname, "src"),
     },
   },
-});
+}));

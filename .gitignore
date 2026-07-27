@@ -29,4 +29,4 @@ storybook-static/
 .playwright-cli/
 **/.playwright-cli/
 test-results/
-playwright-report/
+**/test-results/

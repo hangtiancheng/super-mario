@@ -4,7 +4,7 @@ test.describe("not-found route", (): void => {
   test("renders the 404 page for unknown paths", async ({
     page,
   }): Promise<void> => {
-    await page.goto("/this-path-does-not-exist");
+    await page.goto("./this-path-does-not-exist");
     await expect(page.getByRole("heading", { name: "404" })).toBeVisible();
     await expect(page.getByText(/route missing/i)).toBeVisible();
     await expect(
@@ -15,7 +15,7 @@ test.describe("not-found route", (): void => {
   test("the 404 link navigates back to the home route", async ({
     page,
   }): Promise<void> => {
-    await page.goto("/missing");
+    await page.goto("./missing");
     await page.getByRole("link", { name: /return home/i }).click();
     await expect(page).toHaveURL(/\/$/);
     await expect(
