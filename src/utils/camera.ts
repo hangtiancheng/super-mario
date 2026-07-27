@@ -1,5 +1,5 @@
-import { CAMERA_EASE, VIEWPORT_WIDTH } from "../constants";
-import type { Player } from "../types";
+import { CAMERA_EASE, VIEWPORT_WIDTH } from "@/constants";
+import type { Player } from "@/types";
 import { clamp } from "./rect";
 
 export function getTargetCameraX(player: Player, levelWidth: number): number {

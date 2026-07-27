@@ -1,8 +1,8 @@
 import { act, render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import { GameHud } from "../../src/components/game-hud";
-import type { GameStats } from "../../src/types";
+import { GameHud } from "@/components/game-hud";
+import type { GameStats } from "@/types";
 
 interface TweenTarget {
   value: number;

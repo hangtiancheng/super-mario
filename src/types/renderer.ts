@@ -1,4 +1,4 @@
-import type { GameSimulation } from "../hooks/use-game-simulation";
+import type { GameSimulation } from "@/hooks/use-game-simulation";
 import type { GameState } from "./game";
 
 export type GameRendererKind = "dom" | "pixi";

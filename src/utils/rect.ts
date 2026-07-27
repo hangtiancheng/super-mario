@@ -1,4 +1,4 @@
-import type { Rect } from "../types";
+import type { Rect } from "@/types";
 
 export function intersects(first: Rect, second: Rect): boolean {
   return (

@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useRef } from "react";
 import type { KeyboardEvent, RefObject } from "react";
 
-import type { GameInput } from "../types";
-import { createIdleInput, setGameInputControl } from "../utils";
+import type { GameInput } from "@/types";
+import { createIdleInput, setGameInputControl } from "@/utils";
 
 export interface KeyboardInputControls {
   inputRef: RefObject<GameInput>;

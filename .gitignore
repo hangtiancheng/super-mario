@@ -28,4 +28,6 @@ dist3/
 
 storybook-static/
 **/storybook-static/
-test-results/
+
+.playwright-cli/
+**/.playwright-cli/

@@ -1,6 +1,6 @@
 import type { ReactElement } from "react";
 
-import type { GameAudioControls } from "../hooks";
+import type { GameAudioControls } from "@/hooks";
 
 interface GameHeaderProps {
   audio: GameAudioControls;

@@ -1,4 +1,4 @@
-import type { Platform, Vector } from "../types";
+import type { Platform, Vector } from "@/types";
 import { createSpawns, getPlatformCenter } from "./particles";
 import type { ParticleSpawn } from "./particles";
 

@@ -2,9 +2,9 @@ import { gsap } from "gsap";
 import { useEffect, useRef, useState } from "react";
 import type { ReactElement } from "react";
 
-import type { GameStats } from "../types";
-import type { Difficulty } from "../schema";
-import { useReducedMotion } from "../hooks";
+import type { GameStats } from "@/types";
+import type { Difficulty } from "@/schema";
+import { useReducedMotion } from "@/hooks";
 
 interface GameHudProps {
   difficulty: Difficulty;

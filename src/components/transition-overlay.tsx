@@ -1,6 +1,6 @@
 import type { ReactElement } from "react";
 
-import type { GamePhase } from "../types";
+import type { GamePhase } from "@/types";
 
 type TransitionPhase = Exclude<GamePhase, "running">;
 

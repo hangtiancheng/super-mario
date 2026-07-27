@@ -6,7 +6,7 @@ import {
   insertLeaderboardEntry,
   leaderboardAtom,
   playerNameAtom,
-} from "../stores";
+} from "@/stores";
 import type { GameSimulation } from "./use-game-simulation";
 
 export function useScoreSubmission(simulation: GameSimulation): void {

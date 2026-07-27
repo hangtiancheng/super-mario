@@ -1,14 +1,14 @@
 import { memo, useMemo } from "react";
 import type { CSSProperties, ReactElement } from "react";
 
-import { VIEWPORT_HEIGHT } from "../../constants";
-import type { Coin, Enemy, GameRendererProps, Platform } from "../../types";
-import { filterVisibleRects } from "../../utils";
-import { EnemySprite } from "../enemy-sprite";
-import { CoinSprite, PlatformSprite } from "../game-sprites";
-import { ParallaxScenery } from "../parallax-scenery";
-import { ParticleLayer } from "../particle-layer";
-import { PlayerSprite } from "../player-sprite";
+import { VIEWPORT_HEIGHT } from "@/constants";
+import type { Coin, Enemy, GameRendererProps, Platform } from "@/types";
+import { filterVisibleRects } from "@/utils";
+import { EnemySprite } from "@/components/enemy-sprite";
+import { CoinSprite, PlatformSprite } from "@/components/game-sprites";
+import { ParallaxScenery } from "@/components/parallax-scenery";
+import { ParticleLayer } from "@/components/particle-layer";
+import { PlayerSprite } from "@/components/player-sprite";
 
 const MemoEnemySprite = memo(EnemySprite);
 const MemoCoinSprite = memo(CoinSprite);

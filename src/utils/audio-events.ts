@@ -1,4 +1,4 @@
-import type { GameState } from "../types";
+import type { GameState } from "@/types";
 
 export type GameAudioEvent =
   "break" | "coin" | "hit" | "jump" | "loss" | "start" | "stomp" | "win";

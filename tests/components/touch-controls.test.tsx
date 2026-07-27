@@ -3,8 +3,8 @@ import { useRef } from "react";
 import type { ReactElement, RefObject } from "react";
 import { describe, expect, it } from "vitest";
 
-import { TouchControls } from "../../src/components/touch-controls";
-import type { GameInput } from "../../src/types";
+import { TouchControls } from "@/components/touch-controls";
+import type { GameInput } from "@/types";
 
 function Host({ onRestart }: { onRestart: () => void }): ReactElement {
   const inputRef = useRef<GameInput>({

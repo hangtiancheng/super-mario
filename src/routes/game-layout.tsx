@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import type { ReactElement, ReactNode } from "react";
 
-import { usePageIntro } from "../hooks";
+import { usePageIntro } from "@/hooks";
 
 export type GameLayoutPresentation = "fullscreen" | "standard";
 

@@ -1,5 +1,5 @@
-import { PARTICLE_LIFE_MS } from "../constants";
-import type { Particle, ParticleKind, Platform, Vector } from "../types";
+import { PARTICLE_LIFE_MS } from "@/constants";
+import type { Particle, ParticleKind, Platform, Vector } from "@/types";
 
 export interface ParticleSpawn {
   kind: ParticleKind;

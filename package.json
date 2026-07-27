@@ -20,6 +20,7 @@
     "git:commit": "git add -A && git commit -m \"feat: Introduce new features\"",
     "git:push": "pnpm git:commit && git push origin main"
   },
+  "license": "MIT",
   "dependencies": {
     "@sentry/react": "^10.68.0",
     "clsx": "^2.1.1",

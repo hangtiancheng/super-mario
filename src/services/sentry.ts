@@ -1,14 +1,10 @@
 import { z } from "zod";
 
-const sentryEnvSchema = z
-  .object({
-    VITE_SENTRY_DSN: z.union([z.string().url(), z.literal("")]).optional(),
-    VITE_SENTRY_TRACES_SAMPLE_RATE: z
-      .union([z.string(), z.number()])
-      .optional(),
-    MODE: z.string().optional(),
-  })
-  .passthrough();
+const sentryEnvSchema = z.looseObject({
+  VITE_SENTRY_DSN: z.union([z.string().url(), z.literal("")]).optional(),
+  VITE_SENTRY_TRACES_SAMPLE_RATE: z.union([z.string(), z.number()]).optional(),
+  MODE: z.string().optional(),
+});
 
 const tracesRateSchema = z.coerce.number().min(0).max(1);
 

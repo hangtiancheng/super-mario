@@ -1,7 +1,7 @@
 import { Container } from "pixi.js";
 
-import type { Coin, Enemy, GameState, Particle, Platform } from "../../types";
-import { filterVisibleRects } from "../../utils";
+import type { Coin, Enemy, GameState, Particle, Platform } from "@/types";
+import { filterVisibleRects } from "@/utils";
 import {
   createPixiBackground,
   destroyPixiBackground,

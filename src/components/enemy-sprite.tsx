@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import type { CSSProperties, ReactElement } from "react";
 
-import type { Enemy, EnemyType, Rect } from "../types";
+import type { Enemy, EnemyType, Rect } from "@/types";
 
 interface EnemySpriteProps {
   enemy: Enemy;

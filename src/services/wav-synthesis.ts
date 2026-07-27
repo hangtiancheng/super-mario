@@ -1,5 +1,5 @@
-import { exhaustiveCheck } from "../utils";
-import type { ToneProfile } from "../utils";
+import { exhaustiveCheck } from "@/utils";
+import type { ToneProfile } from "@/utils";
 
 const sampleRate: number = 22_050;
 

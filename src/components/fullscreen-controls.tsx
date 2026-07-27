@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import type { ReactElement } from "react";
 
-import { useFullscreen } from "../hooks";
+import { useFullscreen } from "@/hooks";
 
 interface FullscreenControlsProps {
   routeMode: "fullscreen" | "home";

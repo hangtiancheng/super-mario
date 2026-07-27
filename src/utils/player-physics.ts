@@ -1,5 +1,5 @@
-import { COYOTE_TIME_MS } from "../constants";
-import type { Platform, Player } from "../types";
+import { COYOTE_TIME_MS } from "@/constants";
+import type { Platform, Player } from "@/types";
 import { intersects } from "./rect";
 
 export interface HorizontalAxisState {

@@ -1,12 +1,12 @@
 import { describe, expect, it } from "vitest";
 
-import type { Particle, Platform } from "../../src/types";
+import type { Particle, Platform } from "@/types";
 import {
   createSpawns,
   getPlatformCenter,
   spawnParticles,
   updateParticles,
-} from "../../src/utils/particles";
+} from "@/utils/particles";
 
 function makeParticle(overrides: Partial<Particle> = {}): Particle {
   return {

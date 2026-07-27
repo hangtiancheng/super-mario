@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { LeaderboardPanel } from "../../src/components/leaderboard-panel";
-import type { LeaderboardEntry } from "../../src/schema";
+import { LeaderboardPanel } from "@/components/leaderboard-panel";
+import type { LeaderboardEntry } from "@/schema";
 
 const entries: LeaderboardEntry[] = [
   {

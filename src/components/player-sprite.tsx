@@ -1,8 +1,8 @@
 import clsx from "clsx";
 import type { CSSProperties, ReactElement } from "react";
 
-import { RUN_ANIMATION_FRAME_MS } from "../constants";
-import type { GamePhase, Player, PlayerAnimation, Rect } from "../types";
+import { RUN_ANIMATION_FRAME_MS } from "@/constants";
+import type { GamePhase, Player, PlayerAnimation, Rect } from "@/types";
 
 interface PlayerSpriteProps {
   player: Player;

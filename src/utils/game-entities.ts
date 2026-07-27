@@ -1,5 +1,5 @@
-import { PLAYER_SIZE } from "../constants";
-import type { Coin, LevelData, Player, Vector } from "../types";
+import { PLAYER_SIZE } from "@/constants";
+import type { Coin, LevelData, Player, Vector } from "@/types";
 import { intersects } from "./rect";
 
 export interface CoinResult {

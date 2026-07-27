@@ -1,6 +1,6 @@
-import { INFINITE_SEGMENT_TRIGGER_DISTANCE } from "../constants";
-import type { DifficultyOption } from "../constants";
-import type { Coin, Enemy, LevelData, LevelCoin, Platform } from "../types";
+import { INFINITE_SEGMENT_TRIGGER_DISTANCE } from "@/constants";
+import type { DifficultyOption } from "@/constants";
+import type { Coin, Enemy, LevelData, LevelCoin, Platform } from "@/types";
 import { createSegmentEnemy } from "./enemy-variation";
 
 export interface InfiniteWorldResult {

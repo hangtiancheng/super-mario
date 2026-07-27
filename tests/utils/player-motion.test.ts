@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vitest";
 
-import { COYOTE_TIME_MS } from "../../src/constants";
-import type { GameInput, Platform, Player } from "../../src/types";
-import { updatePlayer } from "../../src/utils/player-motion";
-import { buildPlatformIndex } from "../../src/utils/spatial-index";
+import { COYOTE_TIME_MS } from "@/constants";
+import type { GameInput, Platform, Player } from "@/types";
+import { updatePlayer } from "@/utils/player-motion";
+import { buildPlatformIndex } from "@/utils/spatial-index";
 
 const idleInput: GameInput = {
   jump: false,

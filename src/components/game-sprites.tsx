@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import type { CSSProperties, ReactElement } from "react";
 
-import type { Coin, Platform, PlatformTone, Rect } from "../types";
+import type { Coin, Platform, PlatformTone, Rect } from "@/types";
 
 interface PlatformSpriteProps {
   platform: Platform;

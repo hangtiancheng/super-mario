@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Link, useRouteError } from "react-router";
 import type { ReactElement } from "react";
 
-import { captureException } from "../services";
+import { captureException } from "@/services";
 
 export function RouteErrorElement(): ReactElement {
   const error = useRouteError();

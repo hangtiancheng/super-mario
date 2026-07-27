@@ -1,4 +1,4 @@
-import type { Size } from "../types";
+import type { Size } from "@/types";
 
 export const VIEWPORT_WIDTH: number = 960;
 export const VIEWPORT_HEIGHT: number = 540;

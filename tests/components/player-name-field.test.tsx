@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
 
-import { PlayerNameField } from "../../src/components/player-name-field";
+import { PlayerNameField } from "@/components/player-name-field";
 
 describe("PlayerNameField", (): void => {
   it("renders an accessible labelled input", (): void => {

@@ -1,8 +1,8 @@
 import { Suspense, lazy } from "react";
 import type { ReactElement } from "react";
 
-import type { GameSimulation } from "../hooks";
-import type { GameRendererKind, GameState } from "../types";
+import type { GameSimulation } from "@/hooks";
+import type { GameRendererKind, GameState } from "@/types";
 import { DomGameRenderer } from "./renderers";
 
 const LazyPixiGameRenderer = lazy(() =>

@@ -1,3 +1,4 @@
+export { playBgm } from "./howler-bgm";
 export {
   createHowlerSoundBank,
   prepareHowlerSoundBank,

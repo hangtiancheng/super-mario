@@ -1,7 +1,7 @@
 import { Howl, Howler } from "howler";
 
-import { getToneProfiles } from "../utils";
-import type { GameAudioEvent } from "../utils";
+import { getToneProfiles } from "@/utils";
+import type { GameAudioEvent } from "@/utils";
 import { createWavDataUri } from "./wav-synthesis";
 
 const gameAudioEvents: GameAudioEvent[] = [

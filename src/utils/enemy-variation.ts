@@ -4,7 +4,7 @@ import type {
   HopperEnemy,
   HorizontalDirection,
   WalkerEnemy,
-} from "../types";
+} from "@/types";
 import { clamp } from "./rect";
 
 const BASE_POSITION_JITTER: number = 48;

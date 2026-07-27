@@ -1,5 +1,5 @@
-import { MAX_FRAME_MS, getDifficultyOption } from "../constants";
-import type { GameInput, GameState } from "../types";
+import { MAX_FRAME_MS, getDifficultyOption } from "@/constants";
+import type { GameInput, GameState } from "@/types";
 import { getTargetCameraX, smoothCameraX } from "./camera";
 import { resolveEnemyContacts } from "./enemy-contact";
 import { updateEnemies } from "./enemy-motion";

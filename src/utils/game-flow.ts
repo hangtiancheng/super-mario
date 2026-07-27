@@ -1,4 +1,4 @@
-import type { GameInput, GameState, Platform, Player } from "../types";
+import type { GameInput, GameState, Platform, Player } from "@/types";
 import { getTargetCameraX } from "./camera";
 import { clamp } from "./rect";
 

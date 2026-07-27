@@ -1,7 +1,7 @@
 import { Component } from "react";
 import type { ErrorInfo, ReactElement, ReactNode } from "react";
 
-import { captureException } from "../services";
+import { captureException } from "@/services";
 
 interface AppErrorBoundaryProps {
   children: ReactNode;

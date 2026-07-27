@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-import { FIXED_STEP_MS, MAX_FRAME_MS } from "../constants";
+import { FIXED_STEP_MS, MAX_FRAME_MS } from "@/constants";
 
 export function useGameLoop(
   onFrame: (deltaMs: number) => void,

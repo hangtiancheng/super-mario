@@ -1,6 +1,6 @@
 import type { Graphics } from "pixi.js";
 
-import type { Coin, Enemy, GameState, Particle, Platform } from "../../types";
+import type { Coin, Enemy, GameState, Particle, Platform } from "@/types";
 import {
   getEnemyColor,
   getParticleColor,

@@ -1,4 +1,4 @@
-import type { GameInput } from "../types";
+import type { GameInput } from "@/types";
 
 export type GameInputControl = "jump" | "left" | "restart" | "right";
 

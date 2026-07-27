@@ -1,10 +1,10 @@
 import { describe, expect, it } from "vitest";
 
-import type { Platform, Player } from "../../src/types";
+import type { Platform, Player } from "@/types";
 import {
   carryPlayerByPlatforms,
   updatePlatforms,
-} from "../../src/utils/platform-motion";
+} from "@/utils/platform-motion";
 
 const movingPlatform: Platform = {
   height: 16,

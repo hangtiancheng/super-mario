@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import type { CSSProperties, ReactElement } from "react";
 
-import type { Particle, ParticleKind, Rect } from "../types";
+import type { Particle, ParticleKind, Rect } from "@/types";
 
 interface ParticleLayerProps {
   particles: Particle[];

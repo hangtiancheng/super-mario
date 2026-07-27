@@ -4,7 +4,7 @@ import type {
   HopperEnemy,
   HorizontalDirection,
   WalkerEnemy,
-} from "../types";
+} from "@/types";
 import { exhaustiveCheck } from "./exhaustive-check";
 
 type PatrolResult = { direction: HorizontalDirection; x: number };

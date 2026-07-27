@@ -1,5 +1,5 @@
-import { MOVING_PLATFORM_RIDER_TOLERANCE } from "../constants";
-import type { Platform, PlatformMotion, Player } from "../types";
+import { MOVING_PLATFORM_RIDER_TOLERANCE } from "@/constants";
+import type { Platform, PlatformMotion, Player } from "@/types";
 
 export interface PlatformDelta {
   dx: number;

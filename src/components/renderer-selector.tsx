@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import type { ReactElement } from "react";
 
-import type { GameRendererKind } from "../types";
+import type { GameRendererKind } from "@/types";
 
 interface RendererOption {
   label: string;

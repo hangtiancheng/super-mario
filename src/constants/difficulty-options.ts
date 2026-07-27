@@ -1,4 +1,4 @@
-import type { Difficulty } from "../schema";
+import type { Difficulty } from "@/schema";
 
 export interface DifficultyOption {
   cameraEase: number;

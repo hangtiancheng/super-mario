@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 
-import { difficultyOptions } from "../../src/constants";
-import type { Difficulty } from "../../src/schema";
-import type { DifficultyOption } from "../../src/constants";
+import { difficultyOptions } from "@/constants";
+import type { Difficulty } from "@/schema";
+import type { DifficultyOption } from "@/constants";
 
 function getOption(difficulty: Difficulty): DifficultyOption {
   const option = difficultyOptions.find(

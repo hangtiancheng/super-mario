@@ -1,9 +1,9 @@
 import clsx from "clsx";
 import type { ReactElement } from "react";
 
-import { difficultyOptions } from "../constants";
-import type { DifficultyOption } from "../constants";
-import type { Difficulty } from "../schema";
+import { difficultyOptions } from "@/constants";
+import type { DifficultyOption } from "@/constants";
+import type { Difficulty } from "@/schema";
 
 interface DifficultySelectorProps {
   difficulty: Difficulty;

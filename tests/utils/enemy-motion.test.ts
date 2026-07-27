@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 
-import type { FlyerEnemy, HopperEnemy, WalkerEnemy } from "../../src/types";
-import { updateEnemies } from "../../src/utils/enemy-motion";
+import type { FlyerEnemy, HopperEnemy, WalkerEnemy } from "@/types";
+import { updateEnemies } from "@/utils/enemy-motion";
 
 function makeWalker(overrides: Partial<WalkerEnemy> = {}): WalkerEnemy {
   return {

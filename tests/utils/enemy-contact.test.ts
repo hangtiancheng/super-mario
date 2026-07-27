@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 
-import type { Enemy, Player, WalkerEnemy } from "../../src/types";
-import { resolveEnemyContacts } from "../../src/utils/enemy-contact";
+import type { Enemy, Player, WalkerEnemy } from "@/types";
+import { resolveEnemyContacts } from "@/utils/enemy-contact";
 
 function makePlayer(overrides: Partial<Player> = {}): Player {
   return {

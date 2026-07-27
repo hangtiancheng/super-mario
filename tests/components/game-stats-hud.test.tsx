@@ -3,9 +3,9 @@ import { useRef } from "react";
 import type { ReactElement, RefObject } from "react";
 import { describe, expect, it } from "vitest";
 
-import { GameStatsHud } from "../../src/components/game-stats-hud";
-import type { GameSimulation } from "../../src/hooks";
-import type { GameState } from "../../src/types";
+import { GameStatsHud } from "@/components/game-stats-hud";
+import type { GameSimulation } from "@/hooks";
+import type { GameState } from "@/types";
 
 function makeState(): GameState {
   return {

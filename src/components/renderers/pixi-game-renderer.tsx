@@ -2,8 +2,8 @@ import { Application, Container } from "pixi.js";
 import { useEffect, useRef, useState } from "react";
 import type { ReactElement } from "react";
 
-import { VIEWPORT_HEIGHT, VIEWPORT_WIDTH } from "../../constants";
-import type { PixiGameRendererProps } from "../../types";
+import { VIEWPORT_HEIGHT, VIEWPORT_WIDTH } from "@/constants";
+import type { PixiGameRendererProps } from "@/types";
 import { destroyPixiScene, renderPixiScene } from "./pixi-scene";
 
 export function PixiGameRenderer({

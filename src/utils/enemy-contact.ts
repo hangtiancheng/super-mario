@@ -1,5 +1,5 @@
-import { STOMP_BOUNCE_VELOCITY, STOMP_TOLERANCE } from "../constants";
-import type { Enemy, Player, Vector } from "../types";
+import { STOMP_BOUNCE_VELOCITY, STOMP_TOLERANCE } from "@/constants";
+import type { Enemy, Player, Vector } from "@/types";
 import { couldCollideHorizontally } from "./collision-candidates";
 import { intersects } from "./rect";
 

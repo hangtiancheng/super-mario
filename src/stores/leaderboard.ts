@@ -9,9 +9,9 @@ import {
   gameRendererKindSchema,
   leaderboardSchema,
   playerNameSchema,
-} from "../schema";
-import type { Difficulty, LeaderboardEntry, PlayerName } from "../schema";
-import type { GameRendererKind } from "../types";
+} from "@/schema";
+import type { Difficulty, LeaderboardEntry, PlayerName } from "@/schema";
+import type { GameRendererKind } from "@/types";
 
 const leaderboardStorage =
   unstable_withStorageValidator<LeaderboardEntry[]>(isLeaderboard)(

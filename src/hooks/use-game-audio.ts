@@ -1,11 +1,15 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { RefObject } from "react";
 
-import { createHowlerSoundBank, prepareHowlerSoundBank } from "../services";
-import type { HowlerSoundBank } from "../services";
-import type { GameState } from "../types";
-import { getAudioEvent } from "../utils";
-import type { GameAudioEvent } from "../utils";
+import {
+  createHowlerSoundBank,
+  playBgm,
+  prepareHowlerSoundBank,
+} from "@/services";
+import type { HowlerSoundBank } from "@/services";
+import type { GameState } from "@/types";
+import { getAudioEvent } from "@/utils";
+import type { GameAudioEvent } from "@/utils";
 import type { GameSimulation } from "./use-game-simulation";
 
 export interface GameAudioControls {
@@ -29,6 +33,7 @@ export function useGameAudio(simulation: GameSimulation): GameAudioControls {
     const soundBank = getSoundBank(soundBankRef);
     soundBank.unlock();
     soundBank.setEnabled(enabledRef.current);
+    playBgm();
     setUnlocked(true);
   }, []);
 

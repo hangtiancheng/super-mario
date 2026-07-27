@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 
-import type { GameInput, GameState, LevelData } from "../../src/types";
-import { createInitialGameState, updateGameState } from "../../src/utils";
+import type { GameInput, GameState, LevelData } from "@/types";
+import { createInitialGameState, updateGameState } from "@/utils";
 
 const idleInput: GameInput = {
   jump: false,

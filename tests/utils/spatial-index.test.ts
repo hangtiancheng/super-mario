@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest";
 
-import type { Platform } from "../../src/types";
+import type { Platform } from "@/types";
 import {
   buildPlatformIndex,
   getPlatformsInRange,
   lowerBoundByX,
-} from "../../src/utils/spatial-index";
+} from "@/utils/spatial-index";
 
 function makePlatform(id: string, x: number, width: number = 64): Platform {
   return { height: 16, id, tone: "mario", width, x, y: 0 };

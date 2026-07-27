@@ -2,16 +2,16 @@ import { useAtom, useAtomValue } from "jotai";
 import { useCallback, useState } from "react";
 import type { ReactElement } from "react";
 
-import { firstLevel } from "../constants";
+import { firstLevel } from "@/constants";
 import {
   useGameAudio,
   useGameSimulation,
   useGameSimulationState,
   useKeyboardInput,
   useScoreSubmission,
-} from "../hooks";
-import type { Difficulty } from "../schema";
-import { difficultyAtom, leaderboardAtom, rendererKindAtom } from "../stores";
+} from "@/hooks";
+import type { Difficulty } from "@/schema";
+import { difficultyAtom, leaderboardAtom, rendererKindAtom } from "@/stores";
 import { DifficultySelector } from "./difficulty-selector";
 import { FullscreenControls } from "./fullscreen-controls";
 import { GameHeader } from "./game-header";

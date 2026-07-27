@@ -1,4 +1,4 @@
-import type { Platform, Player, Rect } from "../types";
+import type { Platform, Player, Rect } from "@/types";
 import { getPlatformsInRange, type PlatformIndex } from "./spatial-index";
 
 const COLLISION_WINDOW_MARGIN = 240;

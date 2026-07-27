@@ -1,8 +1,8 @@
 import { useAtom } from "jotai";
 import type { ChangeEvent, ReactElement } from "react";
 
-import { playerNameSchema } from "../schema";
-import { playerNameAtom } from "../stores";
+import { playerNameSchema } from "@/schema";
+import { playerNameAtom } from "@/stores";
 
 export function PlayerNameField(): ReactElement {
   const [playerName, setPlayerName] = useAtom(playerNameAtom);

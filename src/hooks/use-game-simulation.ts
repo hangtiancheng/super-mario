@@ -1,14 +1,14 @@
 import { useCallback, useMemo, useRef, useSyncExternalStore } from "react";
 import type { RefObject } from "react";
 
-import type { Difficulty } from "../schema";
-import { captureException } from "../services";
-import type { GameInput, GameState, LevelData } from "../types";
+import type { Difficulty } from "@/schema";
+import { captureException } from "@/services";
+import type { GameInput, GameState, LevelData } from "@/types";
 import {
   createInitialGameState,
   safelyUpdateGameState,
   updateGameState,
-} from "../utils";
+} from "@/utils";
 import { useGameLoop } from "./use-game-loop";
 
 export interface GameSimulation {

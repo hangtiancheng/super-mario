@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 
-import { INFINITE_SEGMENT_TRIGGER_DISTANCE } from "../../src/constants";
-import type { Coin, Enemy, LevelData, Platform } from "../../src/types";
-import { extendInfiniteWorld } from "../../src/utils/infinite-map";
+import { INFINITE_SEGMENT_TRIGGER_DISTANCE } from "@/constants";
+import type { Coin, Enemy, LevelData, Platform } from "@/types";
+import { extendInfiniteWorld } from "@/utils/infinite-map";
 
 const baseLevel: LevelData = {
   coins: [{ id: "c1", height: 22, width: 22, x: 100, y: 200 }],

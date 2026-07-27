@@ -1,5 +1,5 @@
-import { VIEWPORT_WIDTH } from "../constants";
-import type { Rect } from "../types";
+import { VIEWPORT_WIDTH } from "@/constants";
+import type { Rect } from "@/types";
 
 export interface ViewportBounds {
   left: number;

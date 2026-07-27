@@ -1,6 +1,6 @@
-import { firstLevel, getDifficultyOption } from "../constants";
-import type { Difficulty } from "../schema";
-import type { GameState, LevelData } from "../types";
+import { firstLevel, getDifficultyOption } from "@/constants";
+import type { Difficulty } from "@/schema";
+import type { GameState, LevelData } from "@/types";
 import { getTargetCameraX } from "./camera";
 import { createCoins, createPlayer } from "./game-entities";
 

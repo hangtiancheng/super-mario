@@ -1,6 +1,6 @@
 import { Graphics } from "pixi.js";
 
-import type { Rect } from "../../types";
+import type { Rect } from "@/types";
 
 export function createRect(
   rect: Rect,

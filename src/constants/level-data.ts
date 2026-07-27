@@ -1,5 +1,5 @@
-import { levelDataSchema } from "../schema";
-import type { LevelData } from "../types";
+import { levelDataSchema } from "@/schema";
+import type { LevelData } from "@/types";
 
 const rawFirstLevel: unknown = {
   id: "sunset-meadow",

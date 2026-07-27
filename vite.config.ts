@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 
 import packageJson from "./package.json" with { type: "json" };
+import { resolve } from "path";
 
 const vendorChunkMap: ReadonlyArray<readonly [string, string]> = [
   ["pixi.js", "pixi"],
@@ -35,4 +36,9 @@ export default defineConfig({
     __APP_VERSION__: JSON.stringify(releaseId),
   },
   plugins: [react(), tailwindcss()],
+  resolve: {
+    alias: {
+      "@": resolve(import.meta.dirname, "src"),
+    },
+  },
 });

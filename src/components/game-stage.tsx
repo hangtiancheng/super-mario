@@ -1,10 +1,10 @@
 import { useEffect, useId, useRef } from "react";
 import type { CSSProperties, ReactElement } from "react";
 
-import { VIEWPORT_HEIGHT, VIEWPORT_WIDTH } from "../constants";
-import { useGameSimulationState, useReducedMotion } from "../hooks";
-import type { GameSimulation, KeyboardInputControls } from "../hooks";
-import type { GameRendererKind } from "../types";
+import { VIEWPORT_HEIGHT, VIEWPORT_WIDTH } from "@/constants";
+import { useGameSimulationState, useReducedMotion } from "@/hooks";
+import type { GameSimulation, KeyboardInputControls } from "@/hooks";
+import type { GameRendererKind } from "@/types";
 import { GameRenderer, RunningMessage } from "./game-stage-internals";
 import { TransitionOverlay } from "./transition-overlay";
 

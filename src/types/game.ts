@@ -1,4 +1,4 @@
-import type { Difficulty } from "../schema";
+import type { Difficulty } from "@/schema";
 import type { GameStats } from "./stats";
 
 export type GamePhase = "ready" | "running" | "won" | "lost";

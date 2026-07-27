@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 
-import type { HopperEnemy, WalkerEnemy } from "../../src/types";
-import { createSegmentEnemy } from "../../src/utils";
+import type { HopperEnemy, WalkerEnemy } from "@/types";
+import { createSegmentEnemy } from "@/utils";
 
 const walker: WalkerEnemy = {
   direction: 1,

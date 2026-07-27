@@ -1,7 +1,7 @@
 import type { ReactElement } from "react";
 
-import { useGameSimulationState } from "../hooks";
-import type { GameSimulation } from "../hooks";
+import { useGameSimulationState } from "@/hooks";
+import type { GameSimulation } from "@/hooks";
 import { GameHud } from "./game-hud";
 
 interface GameStatsHudProps {

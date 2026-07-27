@@ -4,7 +4,7 @@ import {
   getScoreBreakdown,
   getWeightedScore,
   getRunDistance,
-} from "../../src/utils/score";
+} from "@/utils/score";
 
 describe("getRunDistance", (): void => {
   it("returns positive distance from spawn", (): void => {

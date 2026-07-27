@@ -3,7 +3,7 @@ import { useCallback } from "react";
 import { Link } from "react-router";
 import type { CSSProperties, ReactElement } from "react";
 
-import { firstLevel, VIEWPORT_HEIGHT, VIEWPORT_WIDTH } from "../constants";
+import { firstLevel, VIEWPORT_HEIGHT, VIEWPORT_WIDTH } from "@/constants";
 import {
   useGameAudio,
   useGameSimulation,
@@ -11,8 +11,8 @@ import {
   useKeyboardInput,
   useScoreSubmission,
   useViewportScale,
-} from "../hooks";
-import { difficultyAtom, rendererKindAtom } from "../stores";
+} from "@/hooks";
+import { difficultyAtom, rendererKindAtom } from "@/stores";
 import { GameStage } from "./game-stage";
 import { TouchControls } from "./touch-controls";
 

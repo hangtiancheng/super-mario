@@ -1,6 +1,6 @@
 import type { ReactElement } from "react";
 
-import type { LeaderboardEntry } from "../schema";
+import type { LeaderboardEntry } from "@/schema";
 
 interface LeaderboardPanelProps {
   entries: LeaderboardEntry[];

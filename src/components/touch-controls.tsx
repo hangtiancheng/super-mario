@@ -2,9 +2,9 @@ import clsx from "clsx";
 import { useState } from "react";
 import type { PointerEvent, ReactElement, RefObject } from "react";
 
-import type { GameInput } from "../types";
-import { setGameInputControl } from "../utils";
-import type { GameInputControl } from "../utils";
+import type { GameInput } from "@/types";
+import { setGameInputControl } from "@/utils";
+import type { GameInputControl } from "@/utils";
 
 interface TouchControlsProps {
   inputRef: RefObject<GameInput>;

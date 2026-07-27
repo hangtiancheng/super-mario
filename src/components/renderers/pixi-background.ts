@@ -1,6 +1,6 @@
 import { Container, Graphics } from "pixi.js";
 
-import { VIEWPORT_HEIGHT, VIEWPORT_WIDTH } from "../../constants";
+import { VIEWPORT_HEIGHT, VIEWPORT_WIDTH } from "@/constants";
 
 const CLOUD_COUNT = 5;
 const HILL_COUNT = 4;

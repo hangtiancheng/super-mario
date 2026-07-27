@@ -1,10 +1,10 @@
-import type { Difficulty } from "../schema";
+import type { Difficulty } from "@/schema";
 import {
   BREAKABLE_SCORE,
   COIN_SCORE,
   ENEMY_SCORE,
   getDifficultyOption,
-} from "../constants";
+} from "@/constants";
 
 export interface ScoreInput {
   marioBroken: number;

@@ -6,8 +6,8 @@ import {
   JUMP_VELOCITY,
   MAX_FALL_SPEED,
   MOVE_SPEED,
-} from "../constants";
-import type { GameInput, HorizontalDirection, Player } from "../types";
+} from "@/constants";
+import type { GameInput, HorizontalDirection, Player } from "@/types";
 import { getCollisionCandidates } from "./collision-candidates";
 import { resolveHorizontalAxis, resolveVerticalAxis } from "./player-physics";
 import type { PlatformIndex } from "./spatial-index";

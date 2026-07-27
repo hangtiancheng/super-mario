@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 
-import { firstLevel } from "../../src/constants";
-import { createInitialGameState, getAudioEvent } from "../../src/utils";
+import { firstLevel } from "@/constants";
+import { createInitialGameState, getAudioEvent } from "@/utils";
 
 describe("getAudioEvent", (): void => {
   it("uses stomped enemy stats for stomp audio", (): void => {

@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vitest";
 
-import { firstLevel } from "../../src/constants";
-import type { GameInput, GameState, Platform } from "../../src/types";
-import { loseLife } from "../../src/utils/game-flow";
-import { createInitialGameState, updateGameState } from "../../src/utils";
+import { firstLevel } from "@/constants";
+import type { GameInput, GameState, Platform } from "@/types";
+import { loseLife } from "@/utils/game-flow";
+import { createInitialGameState, updateGameState } from "@/utils";
 
 const idleInput: GameInput = {
   jump: false,
