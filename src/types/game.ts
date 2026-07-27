@@ -1,7 +1,7 @@
 import type { Difficulty } from "@/schema";
 import type { GameStats } from "./stats";
 
-export type GamePhase = "ready" | "running" | "won" | "lost";
+export type GamePhase = "ready" | "running" | "lost";
 
 export type HorizontalDirection = -1 | 1;
 
@@ -10,11 +10,11 @@ export type PlatformTone = "breakable" | "mario" | "grass" | "ground";
 export type PlatformMotionAxis = "x" | "y";
 
 export type PlayerAnimation =
-  "celebrate" | "fall" | "hurt" | "idle" | "jump" | "run-one" | "run-two";
+  "fall" | "hurt" | "idle" | "jump" | "run-one" | "run-two";
 
 export type EnemyType = "flyer" | "hopper" | "walker";
 
-export type ParticleKind = "mario" | "coin" | "goal" | "hit" | "stomp";
+export type ParticleKind = "mario" | "coin" | "hit" | "stomp";
 
 export interface Vector {
   x: number;
@@ -35,6 +35,7 @@ export interface Player extends Rect {
   coyoteMs: number;
   jumpBufferMs: number;
   jumpHeld: boolean;
+  invulnerableMs: number;
 }
 
 export interface Platform extends Rect {
@@ -95,10 +96,6 @@ export interface Particle extends Rect {
   maxLifeMs: number;
 }
 
-export interface Goal extends Rect {
-  id: string;
-}
-
 export interface LevelData {
   id: string;
   name: string;
@@ -109,7 +106,6 @@ export interface LevelData {
   platforms: Platform[];
   coins: LevelCoin[];
   enemies: Enemy[];
-  goal: Goal;
 }
 
 export interface GameInput {
@@ -131,7 +127,9 @@ export interface GameState {
   nextParticleId: number;
   nextSegmentIndex: number;
   worldWidth: number;
+  prunedUntilX: number;
   cameraX: number;
   stats: GameStats;
   message: string;
+  messageTimerMs: number;
 }

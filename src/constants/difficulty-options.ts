@@ -13,6 +13,19 @@ export interface DifficultyOption {
   summary: string;
 }
 
+const mediumOption: DifficultyOption = {
+  cameraEase: 8,
+  difficulty: "medium",
+  enemyCountScale: 1,
+  enemyJitterScale: 1,
+  enemySpeedScale: 1,
+  label: "Medium",
+  lives: 3,
+  multiplier: 1.5,
+  platformSpeedScale: 1,
+  summary: "Balanced arcade pacing with standard hazard timing.",
+};
+
 export const difficultyOptions: DifficultyOption[] = [
   {
     cameraEase: 6,
@@ -26,18 +39,7 @@ export const difficultyOptions: DifficultyOption[] = [
     platformSpeedScale: 0.9,
     summary: "Relaxed run with fewer, slower hazards and extra lives.",
   },
-  {
-    cameraEase: 8,
-    difficulty: "medium",
-    enemyCountScale: 1,
-    enemyJitterScale: 1,
-    enemySpeedScale: 1,
-    label: "Medium",
-    lives: 3,
-    multiplier: 1.5,
-    platformSpeedScale: 1,
-    summary: "Balanced arcade pacing with standard hazard timing.",
-  },
+  mediumOption,
   {
     cameraEase: 10,
     difficulty: "high",
@@ -70,5 +72,5 @@ export function getDifficultyOption(difficulty: Difficulty): DifficultyOption {
       return option;
     }
   }
-  return difficultyOptions[1];
+  return mediumOption;
 }

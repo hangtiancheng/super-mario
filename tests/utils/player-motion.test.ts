@@ -18,6 +18,7 @@ function makePlayer(overrides: Partial<Player> = {}): Player {
     facing: 1,
     grounded: true,
     height: 48,
+    invulnerableMs: 0,
     jumpBufferMs: 0,
     jumpHeld: false,
     velocity: { x: 0, y: 0 },
@@ -83,5 +84,23 @@ describe("updatePlayer", (): void => {
       16,
     );
     expect(result.bumpedPlatformId).toBe("mario-1");
+  });
+
+  it("counts down invulnerability by the frame time and floors at zero", (): void => {
+    const index = buildPlatformIndex([groundPlatform]);
+    const ticking = updatePlayer(
+      makePlayer({ invulnerableMs: 100 }),
+      idleInput,
+      index,
+      16,
+    );
+    expect(ticking.player.invulnerableMs).toBe(84);
+    const drained = updatePlayer(
+      makePlayer({ invulnerableMs: 10 }),
+      idleInput,
+      index,
+      16,
+    );
+    expect(drained.player.invulnerableMs).toBe(0);
   });
 });

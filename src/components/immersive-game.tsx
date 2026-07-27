@@ -1,17 +1,9 @@
 import { useAtomValue } from "jotai";
-import { useCallback } from "react";
 import { Link } from "react-router";
 import type { CSSProperties, ReactElement } from "react";
 
-import { firstLevel, VIEWPORT_HEIGHT, VIEWPORT_WIDTH } from "@/constants";
-import {
-  useGameAudio,
-  useGameSimulation,
-  useGameSimulationState,
-  useKeyboardInput,
-  useScoreSubmission,
-  useViewportScale,
-} from "@/hooks";
+import { VIEWPORT_HEIGHT, VIEWPORT_WIDTH } from "@/constants";
+import { useGameSession, useViewportScale } from "@/hooks";
 import { difficultyAtom, rendererKindAtom } from "@/stores";
 import { GameStage } from "./game-stage";
 import { TouchControls } from "./touch-controls";
@@ -19,21 +11,8 @@ import { TouchControls } from "./touch-controls";
 export function ImmersiveGame(): ReactElement {
   const difficulty = useAtomValue(difficultyAtom);
   const rendererKind = useAtomValue(rendererKindAtom);
-  const keyboard = useKeyboardInput();
-  const simulation = useGameSimulation(
-    firstLevel,
-    difficulty,
-    keyboard.inputRef,
-  );
-  useGameAudio(simulation);
-  useScoreSubmission(simulation);
-
-  const gameState = useGameSimulationState(simulation);
-
-  const restartGame = useCallback((): void => {
-    keyboard.reset();
-    simulation.restart();
-  }, [keyboard, simulation]);
+  const { gameState, keyboard, restartGame, simulation } =
+    useGameSession(difficulty);
 
   const scale = useViewportScale();
   const stageWrapperStyle: CSSProperties = {

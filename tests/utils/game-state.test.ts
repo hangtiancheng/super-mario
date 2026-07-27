@@ -13,7 +13,6 @@ const idleInput: GameInput = {
 const baseLevel: LevelData = {
   coins: [],
   enemies: [],
-  goal: { height: 90, id: "goal", width: 54, x: 900, y: 410 },
   height: 540,
   id: "score-demo",
   name: "Score Demo",
@@ -110,5 +109,44 @@ describe("updateGameState scoring", (): void => {
     const nextState = updateGameState(state, idleInput, 16);
     expect(nextState.stats.marioBroken).toBe(1);
     expect(nextState.stats.score).toBe(50);
+  });
+});
+
+describe("updateGameState prune boundary", (): void => {
+  it("clamps the player at the pruned world edge", (): void => {
+    const running = createRunningState(baseLevel);
+    const state: GameState = {
+      ...running,
+      player: { ...running.player, x: 290 },
+      prunedUntilX: 300,
+    };
+    const nextState = updateGameState(state, idleInput, 16);
+    expect(nextState.player.x).toBe(300);
+    expect(nextState.prunedUntilX).toBe(300);
+  });
+});
+
+describe("updateGameState messages", (): void => {
+  it("holds the current message while its timer is running", (): void => {
+    const state: GameState = {
+      ...createRunningState(baseLevel),
+      message: "Held message",
+      messageTimerMs: 1_000,
+    };
+    const nextState = updateGameState(state, idleInput, 16);
+    expect(nextState.message).toBe("Held message");
+    expect(nextState.messageTimerMs).toBe(984);
+  });
+
+  it("falls back to the progress message once the timer expires", (): void => {
+    const state: GameState = {
+      ...createRunningState(baseLevel),
+      message: "Held message",
+      messageTimerMs: 0,
+    };
+    const nextState = updateGameState(state, idleInput, 16);
+    expect(nextState.message).toBe(
+      "Run farther to raise your distance-weighted score.",
+    );
   });
 });

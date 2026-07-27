@@ -1,91 +1,57 @@
-import { Graphics } from "pixi.js";
+import type { Graphics } from "pixi.js";
 
-import type { Rect } from "@/types";
-
-export function createRect(
-  rect: Rect,
-  color: number,
-  alpha: number = 1,
-): Graphics {
-  return new Graphics()
-    .rect(rect.x, rect.y, rect.width, rect.height)
-    .fill({ alpha, color });
-}
-
-export function createBorderedRect(
-  rect: Rect,
-  color: number,
-  borderColor: number = 0x0f172a,
-): Graphics {
-  return new Graphics()
-    .rect(rect.x, rect.y, rect.width, rect.height)
-    .fill({ color })
-    .stroke({ color: borderColor, width: 4 });
-}
-
-export function createRoundRect(
-  rect: Rect,
-  radius: number,
-  color: number,
-  borderColor: number = 0x0f172a,
-): Graphics {
-  return new Graphics()
-    .roundRect(rect.x, rect.y, rect.width, rect.height, radius)
-    .fill({ color })
-    .stroke({ color: borderColor, width: 4 });
-}
-
-export function createCircle(
+// Traces a rect whose top corners are rounded (CSS rounded-t-*).
+// With radius = min(width / 2, height) it becomes a dome (rounded-t-full).
+export function traceTopRoundedRect(
+  graphic: Graphics,
   x: number,
   y: number,
+  width: number,
+  height: number,
   radius: number,
-  color: number,
-  alpha: number = 1,
 ): Graphics {
-  return new Graphics().circle(x, y, radius).fill({ alpha, color });
+  return graphic
+    .moveTo(x, y + height)
+    .lineTo(x, y + radius)
+    .arc(x + radius, y + radius, radius, Math.PI, Math.PI * 1.5)
+    .lineTo(x + width - radius, y)
+    .arc(x + width - radius, y + radius, radius, Math.PI * 1.5, Math.PI * 2)
+    .lineTo(x + width, y + height)
+    .closePath();
 }
 
-export function getToneColor(tone: string): number {
-  switch (tone) {
-    case "breakable":
-      return 0xf59e0b;
-    case "mario":
-      return 0xea580c;
-    case "grass":
-      return 0x84cc16;
-    case "ground":
-      return 0x57534e;
-    default:
-      return 0x94a3b8;
-  }
+// Traces dash segments along the edges of a rect (CSS border-dashed).
+export function traceDashedRect(
+  graphic: Graphics,
+  x: number,
+  y: number,
+  width: number,
+  height: number,
+  dash: number = 6,
+  gap: number = 5,
+): Graphics {
+  traceDashedLine(graphic, x, y, width, dash, gap, true);
+  traceDashedLine(graphic, x, y + height, width, dash, gap, true);
+  traceDashedLine(graphic, x, y, height, dash, gap, false);
+  traceDashedLine(graphic, x + width, y, height, dash, gap, false);
+  return graphic;
 }
 
-export function getEnemyColor(type: string): number {
-  switch (type) {
-    case "flyer":
-      return 0x0ea5e9;
-    case "hopper":
-      return 0x84cc16;
-    case "walker":
-      return 0xc026d3;
-    default:
-      return 0xec4899;
-  }
-}
-
-export function getParticleColor(kind: string): number {
-  switch (kind) {
-    case "mario":
-      return 0xea580c;
-    case "coin":
-      return 0xfacc15;
-    case "goal":
-      return 0x6ee7b7;
-    case "hit":
-      return 0xef4444;
-    case "stomp":
-      return 0xf0abfc;
-    default:
-      return 0xffffff;
+function traceDashedLine(
+  graphic: Graphics,
+  x: number,
+  y: number,
+  length: number,
+  dash: number,
+  gap: number,
+  horizontal: boolean,
+): void {
+  for (let offset = 0; offset < length; offset += dash + gap) {
+    const end = Math.min(offset + dash, length);
+    if (horizontal) {
+      graphic.moveTo(x + offset, y).lineTo(x + end, y);
+    } else {
+      graphic.moveTo(x, y + offset).lineTo(x, y + end);
+    }
   }
 }

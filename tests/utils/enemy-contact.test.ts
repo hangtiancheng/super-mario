@@ -9,6 +9,7 @@ function makePlayer(overrides: Partial<Player> = {}): Player {
     facing: 1,
     grounded: false,
     height: 48,
+    invulnerableMs: 0,
     jumpBufferMs: 0,
     jumpHeld: false,
     velocity: { x: 0, y: 200 },
@@ -65,6 +66,34 @@ describe("resolveEnemyContacts", (): void => {
     const result = resolveEnemyContacts(previous, current, [enemy]);
     expect(result.wasHit).toBe(true);
     expect(result.stompedCount).toBe(0);
+    expect(result.enemies).toHaveLength(1);
+  });
+
+  it("ignores side hits while the player is invulnerable", (): void => {
+    const previous = makePlayer({ velocity: { x: 100, y: 0 }, y: 190 });
+    const current = makePlayer({
+      invulnerableMs: 800,
+      velocity: { x: 100, y: 0 },
+      x: 105,
+      y: 190,
+    });
+    const enemy = makeWalker({ x: 110, y: 200 });
+    const result = resolveEnemyContacts(previous, current, [enemy]);
+    expect(result.wasHit).toBe(false);
+    expect(result.enemies).toHaveLength(1);
+  });
+
+  it("grants same-frame grace when a stomp bounces into a second enemy", (): void => {
+    const previous = makePlayer({ velocity: { x: 0, y: 200 }, y: 140 });
+    const current = makePlayer({ velocity: { x: 0, y: 200 }, y: 180 });
+    const stompTarget = makeWalker({ x: 110, y: 200 });
+    const overlapping = makeWalker({ id: "w-2", x: 110, y: 190 });
+    const result = resolveEnemyContacts(previous, current, [
+      stompTarget,
+      overlapping,
+    ]);
+    expect(result.stompedCount).toBe(1);
+    expect(result.wasHit).toBe(false);
     expect(result.enemies).toHaveLength(1);
   });
 });

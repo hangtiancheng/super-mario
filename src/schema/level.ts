@@ -71,14 +71,9 @@ const enemySchema = z.discriminatedUnion("type", [
   flyerEnemySchema,
 ]);
 
-const goalSchema = rectSchema.extend({
-  id: z.string().min(1),
-});
-
 export const levelDataSchema = z.object({
   coins: z.array(levelCoinSchema),
   enemies: z.array(enemySchema),
-  goal: goalSchema,
   height: z.number().positive(),
   id: z.string().min(1),
   name: z.string().min(1),
@@ -87,5 +82,3 @@ export const levelDataSchema = z.object({
   summary: z.string().min(1),
   width: z.number().positive(),
 });
-
-export type ParsedLevelData = z.infer<typeof levelDataSchema>;

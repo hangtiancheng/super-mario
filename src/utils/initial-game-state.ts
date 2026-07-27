@@ -22,6 +22,7 @@ export function createInitialGameState(
     nextParticleId: 1,
     nextSegmentIndex: 1,
     worldWidth: level.width,
+    prunedUntilX: 0,
     cameraX: getTargetCameraX(player, level.width),
     stats: {
       marioBroken: 0,
@@ -33,5 +34,6 @@ export function createInitialGameState(
       stompedEnemies: 0,
     },
     message: "Press arrow keys or WASD to start.",
+    messageTimerMs: 0,
   };
 }

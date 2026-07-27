@@ -48,8 +48,6 @@ function getBackdropClass(phase: TransitionPhase): string {
   switch (phase) {
     case "ready":
       return "bg-slate-950/50";
-    case "won":
-      return "bg-emerald-950/45";
     case "lost":
       return "bg-rose-950/55";
   }
@@ -59,8 +57,6 @@ function getPanelClass(phase: TransitionPhase): string {
   switch (phase) {
     case "ready":
       return "bg-amber-100";
-    case "won":
-      return "animate-pulse bg-emerald-100";
     case "lost":
       return "bg-rose-100";
   }
@@ -70,8 +66,6 @@ function getEyebrow(phase: TransitionPhase): string {
   switch (phase) {
     case "ready":
       return "Swifty Mario";
-    case "won":
-      return "Victory sequence";
     case "lost":
       return "Failure sequence";
   }
@@ -81,8 +75,6 @@ function getTitle(phase: TransitionPhase): string {
   switch (phase) {
     case "ready":
       return "Ready?";
-    case "won":
-      return "Level Clear";
     case "lost":
       return "Game Over";
   }

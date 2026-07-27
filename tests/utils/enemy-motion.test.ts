@@ -78,7 +78,9 @@ describe("updateEnemies hopper and flyer", (): void => {
       throw new Error("expected hopper");
     }
     expect(enemy.hopPhaseMs).toBeCloseTo(100, 5);
-    expect(enemy.y).toBeLessThanOrEqual(100);
+    expect(enemy.x).toBeCloseTo(58, 5);
+    expect(enemy.y).toBeCloseTo(100 - Math.abs(Math.sin(100 / 260)) * 30, 5);
+    expect(enemy.y).toBeLessThan(100);
   });
 
   it("flyer updates wavePhaseMs", (): void => {
@@ -102,5 +104,7 @@ describe("updateEnemies hopper and flyer", (): void => {
       throw new Error("expected flyer");
     }
     expect(enemy.wavePhaseMs).toBeCloseTo(100, 5);
+    expect(enemy.x).toBeCloseTo(58, 5);
+    expect(enemy.y).toBeCloseTo(100 + Math.sin(100 / 330) * 30, 5);
   });
 });

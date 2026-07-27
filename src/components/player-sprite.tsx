@@ -1,8 +1,8 @@
 import clsx from "clsx";
 import type { CSSProperties, ReactElement } from "react";
 
-import { RUN_ANIMATION_FRAME_MS } from "@/constants";
 import type { GamePhase, Player, PlayerAnimation, Rect } from "@/types";
+import { getInvulnerabilityOpacity, getPlayerAnimation } from "@/utils";
 
 interface PlayerSpriteProps {
   player: Player;
@@ -20,7 +20,7 @@ export function PlayerSprite({
   return (
     <div
       className="absolute origin-center transition-transform duration-75"
-      style={getPlayerStyle(player)}
+      style={getPlayerStyle(player, elapsedMs)}
     >
       <div
         className={clsx(
@@ -28,12 +28,7 @@ export function PlayerSprite({
           getBodyClass(animation),
         )}
       >
-        <div
-          className={clsx(
-            "mx-auto mt-1 h-3 w-6 rounded-t-full bg-rose-800 transition-transform",
-            getHatClass(animation),
-          )}
-        />
+        <div className="mx-auto mt-1 h-3 w-6 rounded-t-full bg-rose-800" />
         <div className="mx-auto mt-1 h-3 w-5 rounded-full bg-amber-100" />
         <div className="mx-auto mt-1 h-3 w-8 rounded-sm bg-blue-700" />
       </div>
@@ -41,31 +36,10 @@ export function PlayerSprite({
   );
 }
 
-function getPlayerAnimation(
-  player: Player,
-  elapsedMs: number,
-  phase: GamePhase,
-): PlayerAnimation {
-  if (phase === "won") {
-    return "celebrate";
-  }
-  if (phase === "lost") {
-    return "hurt";
-  }
-  if (!player.grounded) {
-    return player.velocity.y < 0 ? "jump" : "fall";
-  }
-  if (Math.abs(player.velocity.x) < 1) {
-    return "idle";
-  }
-  return Math.floor(elapsedMs / RUN_ANIMATION_FRAME_MS) % 2 === 0
-    ? "run-one"
-    : "run-two";
-}
-
-function getPlayerStyle(player: Player): CSSProperties {
+function getPlayerStyle(player: Player, elapsedMs: number): CSSProperties {
   return {
     ...getRectStyle(player),
+    opacity: getInvulnerabilityOpacity(player, elapsedMs),
     transform: player.facing === -1 ? "scaleX(-1)" : "scaleX(1)",
   };
 }
@@ -81,8 +55,6 @@ function getRectStyle(rect: Rect): CSSProperties {
 
 function getBodyClass(animation: PlayerAnimation): string {
   switch (animation) {
-    case "celebrate":
-      return "-translate-y-2 rotate-6";
     case "hurt":
       return "rotate-12 bg-slate-500";
     case "jump":
@@ -96,8 +68,4 @@ function getBodyClass(animation: PlayerAnimation): string {
     case "idle":
       return "translate-y-0";
   }
-}
-
-function getHatClass(animation: PlayerAnimation): string {
-  return animation === "celebrate" ? "-translate-y-1" : "translate-y-0";
 }

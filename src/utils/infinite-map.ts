@@ -51,23 +51,33 @@ export function extendInfiniteWorld(
 
 const PRUNE_SEGMENTS_BEHIND = 2;
 
+export interface PruneResult {
+  platforms: Platform[];
+  coins: Coin[];
+  enemies: Enemy[];
+  prunedUntilX: number;
+}
+
 export function pruneOldEntities(
   platforms: Platform[],
   coins: Coin[],
   enemies: Enemy[],
   levelWidth: number,
   cameraX: number,
-): { platforms: Platform[]; coins: Coin[]; enemies: Enemy[] } {
-  const pruneX = cameraX - levelWidth * PRUNE_SEGMENTS_BEHIND;
+  prunedUntilX: number,
+): PruneResult {
+  const pruneX = Math.max(
+    cameraX - levelWidth * PRUNE_SEGMENTS_BEHIND,
+    prunedUntilX,
+  );
   if (pruneX <= 0) {
-    return { platforms, coins, enemies };
+    return { platforms, coins, enemies, prunedUntilX };
   }
   return {
-    platforms: platforms.filter(
-      (p) => p.x + p.width > pruneX || p.tone === "ground",
-    ),
+    platforms: platforms.filter((p) => p.x + p.width > pruneX),
     coins: coins.filter((c) => c.x + c.width > pruneX),
     enemies: enemies.filter((e) => e.x + e.width + e.patrolDistance > pruneX),
+    prunedUntilX: pruneX,
   };
 }
 
@@ -124,21 +134,19 @@ function cloneEnemies(
   jitterScale: number,
 ): Enemy[] {
   const clonedEnemies: Enemy[] = [];
-  for (const enemy of enemies) {
-    clonedEnemies.push(
-      createSegmentEnemy(enemy, segmentIndex, offsetX, jitterScale),
-    );
+  if (enemies.length === 0) {
+    return clonedEnemies;
   }
-  const extraCount = Math.round(enemies.length * (countScale - 1));
-  for (let i = 0; i < extraCount; i += 1) {
+  const targetCount = Math.max(0, Math.round(enemies.length * countScale));
+  for (let i = 0; i < targetCount; i += 1) {
     const template = enemies[i % enemies.length];
+    if (template === undefined) {
+      continue;
+    }
+    const cloneSegmentIndex =
+      i < enemies.length ? segmentIndex : segmentIndex * 1000 + i;
     clonedEnemies.push(
-      createSegmentEnemy(
-        template,
-        segmentIndex * 1000 + i,
-        offsetX,
-        jitterScale,
-      ),
+      createSegmentEnemy(template, cloneSegmentIndex, offsetX, jitterScale),
     );
   }
   return clonedEnemies;

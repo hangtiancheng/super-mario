@@ -12,7 +12,6 @@ const gameAudioEvents: GameAudioEvent[] = [
   "loss",
   "start",
   "stomp",
-  "win",
 ];
 
 const soundCache = new Map<GameAudioEvent, string>();

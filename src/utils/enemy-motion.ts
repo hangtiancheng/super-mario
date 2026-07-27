@@ -9,6 +9,9 @@ import { exhaustiveCheck } from "./exhaustive-check";
 
 type PatrolResult = { direction: HorizontalDirection; x: number };
 
+const HOP_WAVE_TIME_SCALE_MS = 260;
+const FLYER_WAVE_TIME_SCALE_MS = 330;
+
 export function updateEnemies(
   enemies: Enemy[],
   frameSeconds: number,
@@ -79,7 +82,7 @@ function updateHopper(
     frameSeconds,
   );
   const hopPhaseMs = enemy.hopPhaseMs + frameSeconds * 1_000 * speedScale;
-  const hopWave = Math.abs(Math.sin(hopPhaseMs / 260));
+  const hopWave = Math.abs(Math.sin(hopPhaseMs / HOP_WAVE_TIME_SCALE_MS));
   return {
     type: "hopper",
     id: enemy.id,
@@ -111,7 +114,7 @@ function updateFlyer(
     frameSeconds,
   );
   const wavePhaseMs = enemy.wavePhaseMs + frameSeconds * 1_000 * speedScale;
-  const wave = Math.sin(wavePhaseMs / 330);
+  const wave = Math.sin(wavePhaseMs / FLYER_WAVE_TIME_SCALE_MS);
   return {
     type: "flyer",
     id: enemy.id,

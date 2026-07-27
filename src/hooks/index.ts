@@ -1,5 +1,6 @@
 export { useGameAudio } from "./use-game-audio";
 export { useGameLoop } from "./use-game-loop";
+export { useGameSession } from "./use-game-session";
 export {
   useGameSimulation,
   useGameSimulationState,

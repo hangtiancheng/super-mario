@@ -1,3 +1,4 @@
+import { MESSAGE_HOLD_MS, REVIVE_INVULNERABILITY_MS } from "@/constants";
 import type { GameInput, GameState, Platform, Player } from "@/types";
 import { getTargetCameraX } from "./camera";
 import { clamp } from "./rect";
@@ -7,6 +8,7 @@ export function startGame(state: GameState): GameState {
     ...state,
     phase: "running",
     message: "Run as far as possible. Distance drives the leaderboard.",
+    messageTimerMs: MESSAGE_HOLD_MS,
   };
 }
 
@@ -22,6 +24,7 @@ export function loseLife(state: GameState, message: string): GameState {
       phase: "lost",
       stats: { ...state.stats, lives: 0 },
       message: "Game over. Press R to restart.",
+      messageTimerMs: 0,
     };
   }
   const player = createLocalRevivePlayer(state.player, state.platforms);
@@ -31,6 +34,7 @@ export function loseLife(state: GameState, message: string): GameState {
     cameraX: getTargetCameraX(player, state.worldWidth),
     stats: { ...state.stats, lives },
     message,
+    messageTimerMs: MESSAGE_HOLD_MS,
   };
 }
 
@@ -82,6 +86,7 @@ function resetPlayerForRevive(player: Player): Player {
     coyoteMs: 0,
     jumpBufferMs: 0,
     jumpHeld: false,
+    invulnerableMs: REVIVE_INVULNERABILITY_MS,
   };
 }
 

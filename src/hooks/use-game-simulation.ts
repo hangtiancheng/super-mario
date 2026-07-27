@@ -1,4 +1,10 @@
-import { useCallback, useMemo, useRef, useSyncExternalStore } from "react";
+import {
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
 import type { RefObject } from "react";
 
 import type { Difficulty } from "@/schema";
@@ -25,9 +31,9 @@ export function useGameSimulation(
   inputRef: RefObject<GameInput>,
 ): GameSimulation {
   const listenersRef = useRef<Set<() => void>>(new Set());
-  const stateRef = useRef<GameState>(
-    createInitialGameState(initialLevel, initialDifficulty),
-  );
+  const [stateRef] = useState((): RefObject<GameState> => ({
+    current: createInitialGameState(initialLevel, initialDifficulty),
+  }));
 
   const publish = useCallback((): void => {
     for (const listener of listenersRef.current) {
@@ -43,10 +49,13 @@ export function useGameSimulation(
       stateRef.current = nextState;
       publish();
     },
-    [publish],
+    [publish, stateRef],
   );
 
-  const getSnapshot = useCallback((): GameState => stateRef.current, []);
+  const getSnapshot = useCallback(
+    (): GameState => stateRef.current,
+    [stateRef],
+  );
 
   const subscribe = useCallback((listener: () => void): (() => void) => {
     listenersRef.current.add(listener);
@@ -65,7 +74,7 @@ export function useGameSimulation(
   const restart = useCallback((): void => {
     const currentState = stateRef.current;
     reset(currentState.level, currentState.difficulty);
-  }, [reset]);
+  }, [reset, stateRef]);
 
   const advance = useCallback(
     (deltaMs: number): void => {
@@ -82,7 +91,7 @@ export function useGameSimulation(
         ),
       );
     },
-    [inputRef, replaceState],
+    [inputRef, replaceState, stateRef],
   );
 
   useGameLoop(advance, true);
@@ -95,7 +104,7 @@ export function useGameSimulation(
       stateRef,
       subscribe,
     }),
-    [getSnapshot, reset, restart, subscribe],
+    [getSnapshot, reset, restart, stateRef, subscribe],
   );
 }
 

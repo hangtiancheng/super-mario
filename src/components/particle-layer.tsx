@@ -55,7 +55,5 @@ function getParticleClass(kind: ParticleKind): string {
       return "bg-orange-600";
     case "hit":
       return "bg-red-500";
-    case "goal":
-      return "bg-emerald-300";
   }
 }

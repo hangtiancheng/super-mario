@@ -59,6 +59,7 @@ export function updatePlayer(
     coyoteMs: vertical.coyoteMs,
     jumpBufferMs: jumpState.jumpBufferMs,
     jumpHeld: input.jump,
+    invulnerableMs: Math.max(player.invulnerableMs - frameMs, 0),
   };
   return { player: nextPlayer, bumpedPlatformId: vertical.bumpedPlatformId };
 }

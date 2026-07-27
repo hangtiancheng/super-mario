@@ -1,7 +1,7 @@
 import type { GameState } from "@/types";
 
 export type GameAudioEvent =
-  "break" | "coin" | "hit" | "jump" | "loss" | "start" | "stomp" | "win";
+  "break" | "coin" | "hit" | "jump" | "loss" | "start" | "stomp";
 
 export interface ToneProfile {
   delay: number;
@@ -11,13 +11,14 @@ export interface ToneProfile {
   type: OscillatorType;
 }
 
+// Upward velocity below this marks a fresh jump; stays between
+// STOMP_BOUNCE_VELOCITY (560) and JUMP_VELOCITY (720) magnitudes.
+const JUMP_EVENT_VELOCITY_THRESHOLD = -500;
+
 export function getAudioEvent(
   previous: GameState,
   current: GameState,
 ): GameAudioEvent | null {
-  if (current.phase === "won" && previous.phase !== "won") {
-    return "win";
-  }
   if (current.phase === "lost" && previous.phase !== "lost") {
     return "loss";
   }
@@ -36,7 +37,10 @@ export function getAudioEvent(
   if (previous.phase === "ready" && current.phase === "running") {
     return "start";
   }
-  if (previous.player.velocity.y >= 0 && current.player.velocity.y < -500) {
+  if (
+    previous.player.velocity.y >= 0 &&
+    current.player.velocity.y < JUMP_EVENT_VELOCITY_THRESHOLD
+  ) {
     return "jump";
   }
   return null;
@@ -92,30 +96,6 @@ export function getToneProfiles(event: GameAudioEvent): ToneProfile[] {
     case "start":
       return [
         { delay: 0, duration: 0.12, frequency: 440, gain: 0.07, type: "sine" },
-      ];
-    case "win":
-      return [
-        {
-          delay: 0,
-          duration: 0.1,
-          frequency: 523,
-          gain: 0.08,
-          type: "triangle",
-        },
-        {
-          delay: 0.1,
-          duration: 0.1,
-          frequency: 659,
-          gain: 0.08,
-          type: "triangle",
-        },
-        {
-          delay: 0.2,
-          duration: 0.16,
-          frequency: 784,
-          gain: 0.08,
-          type: "triangle",
-        },
       ];
   }
 }

@@ -1,4 +1,8 @@
-import { MAX_FRAME_MS, getDifficultyOption } from "@/constants";
+import {
+  MAX_FRAME_MS,
+  MESSAGE_HOLD_MS,
+  getDifficultyOption,
+} from "@/constants";
 import type { GameInput, GameState } from "@/types";
 import { getTargetCameraX, smoothCameraX } from "./camera";
 import { resolveEnemyContacts } from "./enemy-contact";
@@ -20,6 +24,8 @@ import { getParticleSpawns } from "./game-particle-spawns";
 import { getRunDistance, getWeightedScore } from "./score";
 import { buildPlatformIndex } from "./spatial-index";
 
+const FALL_OUT_MARGIN_PX = 80;
+
 export function updateGameState(
   previous: GameState,
   input: GameInput,
@@ -29,7 +35,7 @@ export function updateGameState(
     return createInitialGameState(previous.level, previous.difficulty);
   }
 
-  if (previous.phase === "won" || previous.phase === "lost") {
+  if (previous.phase === "lost") {
     return previous;
   }
 
@@ -58,6 +64,7 @@ export function updateGameState(
     world.enemies,
     runningState.level.width,
     runningState.cameraX,
+    runningState.prunedUntilX,
   );
   const platformMotion = updatePlatforms(
     pruned.platforms,
@@ -71,12 +78,16 @@ export function updateGameState(
   );
   const platformIndex = buildPlatformIndex(platformMotion.platforms);
   const motion = updatePlayer(carriedPlayer, input, platformIndex, frameMs);
+  const boundedPlayer =
+    motion.player.x < pruned.prunedUntilX
+      ? { ...motion.player, x: pruned.prunedUntilX }
+      : motion.player;
   const enemies = updateEnemies(
     pruned.enemies,
     frameSeconds,
     difficultyOption.enemySpeedScale,
   );
-  const contact = resolveEnemyContacts(carriedPlayer, motion.player, enemies);
+  const contact = resolveEnemyContacts(carriedPlayer, boundedPlayer, enemies);
   const platforms = removeBumpedPlatform(
     platformMotion.platforms,
     motion.bumpedPlatformId,
@@ -107,7 +118,7 @@ export function updateGameState(
       (motion.bumpedPlatformId === null ? 0 : 1),
     distance,
     coinsCollected: runningState.stats.coinsCollected + coinResult.gained,
-    elapsedMs: runningState.stats.elapsedMs + deltaMs,
+    elapsedMs: runningState.stats.elapsedMs + frameMs,
     stompedEnemies: runningState.stats.stompedEnemies + contact.stompedCount,
   };
   const score = getWeightedScore({
@@ -117,6 +128,9 @@ export function updateGameState(
     distance: stats.distance,
     stompedEnemies: stats.stompedEnemies,
   });
+  const hasProgressEvent =
+    contact.stompedCount > 0 || motion.bumpedPlatformId !== null;
+  const heldTimerMs = Math.max(runningState.messageTimerMs - frameMs, 0);
   const nextState = {
     ...runningState,
     player: contact.player,
@@ -128,16 +142,21 @@ export function updateGameState(
     nextSegmentIndex: world.nextSegmentIndex,
     stats: { ...stats, score },
     worldWidth: world.worldWidth,
+    prunedUntilX: pruned.prunedUntilX,
     cameraX: smoothCameraX(
       runningState.cameraX,
       targetCameraX,
       frameSeconds,
       difficultyOption.cameraEase,
     ),
-    message: getProgressMessage(contact.stompedCount, motion.bumpedPlatformId),
+    message:
+      hasProgressEvent || heldTimerMs <= 0
+        ? getProgressMessage(contact.stompedCount, motion.bumpedPlatformId)
+        : runningState.message,
+    messageTimerMs: hasProgressEvent ? MESSAGE_HOLD_MS : heldTimerMs,
   };
 
-  if (contact.player.y > runningState.level.height + 80) {
+  if (contact.player.y > runningState.level.height + FALL_OUT_MARGIN_PX) {
     return loseLife(nextState, "You missed the landing. Try again.");
   }
 

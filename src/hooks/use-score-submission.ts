@@ -7,24 +7,25 @@ import {
   leaderboardAtom,
   playerNameAtom,
 } from "@/stores";
+import type { GameState } from "@/types";
 import type { GameSimulation } from "./use-game-simulation";
 
 export function useScoreSubmission(simulation: GameSimulation): void {
   const setLeaderboard = useSetAtom(leaderboardAtom);
   const playerName = useAtomValue(playerNameAtom);
-  const submittedElapsedMsRef = useRef<number>(-1);
+  const submittedStateRef = useRef<GameState | null>(null);
 
   useEffect((): (() => void) => {
     function handleStateChange(): void {
       const gameState = simulation.getSnapshot();
       if (
         gameState.phase !== "lost" ||
-        submittedElapsedMsRef.current === gameState.stats.elapsedMs
+        submittedStateRef.current === gameState
       ) {
         return;
       }
 
-      submittedElapsedMsRef.current = gameState.stats.elapsedMs;
+      submittedStateRef.current = gameState;
       const entry = createLeaderboardEntry(
         playerName,
         gameState.stats.score,

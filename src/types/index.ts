@@ -4,7 +4,6 @@ export type {
   PixiGameRendererProps,
 } from "./renderer";
 export type {
-  BaseEnemy,
   Coin,
   Enemy,
   EnemyType,
@@ -12,7 +11,6 @@ export type {
   GameInput,
   GamePhase,
   GameState,
-  Goal,
   HorizontalDirection,
   HopperEnemy,
   LevelCoin,
@@ -21,7 +19,6 @@ export type {
   ParticleKind,
   Platform,
   PlatformMotion,
-  PlatformMotionAxis,
   PlatformTone,
   PlayerAnimation,
   Player,

@@ -20,6 +20,7 @@ export function createPlayer(level: LevelData): Player {
     coyoteMs: 0,
     jumpBufferMs: 0,
     jumpHeld: false,
+    invulnerableMs: 0,
   };
 }
 
@@ -48,13 +49,4 @@ export function collectCoins(coins: Coin[], player: Player): CoinResult {
     }
   }
   return { coins: nextCoins, gained, collectedAt };
-}
-
-export function allCoinsCollected(coins: Coin[]): boolean {
-  for (const coin of coins) {
-    if (!coin.collected) {
-      return false;
-    }
-  }
-  return true;
 }

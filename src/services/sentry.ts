@@ -31,7 +31,12 @@ export async function captureException(error: unknown): Promise<void> {
 async function bootstrapSentry(): Promise<
   typeof import("@sentry/react") | null
 > {
-  const env = sentryEnvSchema.parse(import.meta.env);
+  const envResult = sentryEnvSchema.safeParse(import.meta.env);
+  if (!envResult.success) {
+    console.warn("Sentry disabled: invalid environment", envResult.error);
+    return null;
+  }
+  const env = envResult.data;
   const dsn = env.VITE_SENTRY_DSN;
   if (dsn === undefined || dsn.length === 0) {
     return null;

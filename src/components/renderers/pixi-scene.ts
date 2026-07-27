@@ -41,12 +41,7 @@ export function renderPixiScene(
 ): void {
   const sceneState = getPixiSceneState(scene);
   sceneState.world.x = -state.cameraX;
-  syncPixiBackground(
-    sceneState.background,
-    state.cameraX,
-    state.worldWidth,
-    reducedMotion,
-  );
+  syncPixiBackground(sceneState.background, state.cameraX, reducedMotion);
   sceneState.platformPool.sync(
     filterVisibleRects(state.platforms, state.cameraX),
     getEntityId,

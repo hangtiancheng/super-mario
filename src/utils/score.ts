@@ -26,19 +26,6 @@ export function getRunDistance(playerX: number, spawnX: number): number {
   return Math.max(playerX - spawnX, 0);
 }
 
-export function getDistanceScore(
-  distance: number,
-  difficulty: Difficulty,
-): number {
-  return getWeightedScore({
-    marioBroken: 0,
-    coinsCollected: 0,
-    difficulty,
-    distance,
-    stompedEnemies: 0,
-  });
-}
-
 export function getScoreBreakdown(input: ScoreInput): ScoreBreakdown {
   const distanceScore = input.distance;
   const coinScore = input.coinsCollected * COIN_SCORE;

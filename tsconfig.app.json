@@ -8,7 +8,7 @@
     "strict": true,
     "exactOptionalPropertyTypes": true,
     "noImplicitOverride": true,
-    // "noUncheckedIndexedAccess": true,
+    "noUncheckedIndexedAccess": true,
     "skipLibCheck": true,
     "paths": {
       "@/*": ["./src/*"]

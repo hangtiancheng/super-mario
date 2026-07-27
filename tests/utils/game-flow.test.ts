@@ -32,6 +32,7 @@ function createRunningState(): GameState {
       facing: -1,
       grounded: false,
       height: 48,
+      invulnerableMs: 0,
       jumpBufferMs: 90,
       jumpHeld: true,
       velocity: { x: 120, y: 500 },
@@ -73,6 +74,12 @@ describe("loseLife", (): void => {
     expect(nextState.phase).toBe("lost");
     expect(nextState.stats.lives).toBe(0);
     expect(nextState.message).toBe("Game over. Press R to restart.");
+  });
+
+  it("grants invulnerability frames after a revive", (): void => {
+    const nextState = loseLife(createRunningState(), "Try again.");
+    expect(nextState.player.invulnerableMs).toBe(1_500);
+    expect(nextState.messageTimerMs).toBe(2_400);
   });
 });
 

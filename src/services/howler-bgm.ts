@@ -5,13 +5,19 @@ import bgmUrl from "@/assets/bgm.mp3";
 let bgm: Howl | null = null;
 
 export function playBgm(): void {
-  bgm ??= new Howl({
-    src: [bgmUrl],
-    loop: true,
-    volume: 0.35,
-    html5: true,
-  });
-  if (!bgm.playing()) {
+  if (bgm === null) {
+    // autoplay covers the initial load; guarding on state() prevents
+    // queueing a second loop when unlock fires twice while still loading.
+    bgm = new Howl({
+      src: [bgmUrl],
+      loop: true,
+      volume: 0.35,
+      html5: true,
+      autoplay: true,
+    });
+    return;
+  }
+  if (bgm.state() === "loaded" && !bgm.playing()) {
     bgm.play();
   }
 }

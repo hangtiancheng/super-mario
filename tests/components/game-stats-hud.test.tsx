@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { useRef } from "react";
-import type { ReactElement, RefObject } from "react";
+import type { ReactElement } from "react";
 import { describe, expect, it } from "vitest";
 
 import { GameStatsHud } from "@/components/game-stats-hud";
@@ -16,7 +16,6 @@ function makeState(): GameState {
     level: {
       coins: [],
       enemies: [],
-      goal: { id: "goal", height: 64, width: 32, x: 0, y: 0 },
       height: 540,
       id: "demo",
       name: "Demo",
@@ -26,6 +25,7 @@ function makeState(): GameState {
       width: 1_000,
     },
     message: "Ready",
+    messageTimerMs: 0,
     nextParticleId: 0,
     nextSegmentIndex: 1,
     particles: [],
@@ -36,6 +36,7 @@ function makeState(): GameState {
       facing: 1,
       grounded: true,
       height: 48,
+      invulnerableMs: 0,
       jumpBufferMs: 0,
       jumpHeld: false,
       velocity: { x: 0, y: 0 },
@@ -43,6 +44,7 @@ function makeState(): GameState {
       x: 0,
       y: 0,
     },
+    prunedUntilX: 0,
     stats: {
       marioBroken: 1,
       coinsCollected: 4,
@@ -62,7 +64,7 @@ function StubHost(): ReactElement {
     getSnapshot: (): GameState => stateRef.current,
     reset: (): void => undefined,
     restart: (): void => undefined,
-    stateRef: stateRef as RefObject<GameState>,
+    stateRef,
     subscribe: (): (() => void) => (): void => undefined,
   };
   return <GameStatsHud simulation={simulation} />;

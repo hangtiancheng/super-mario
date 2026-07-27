@@ -2,14 +2,7 @@ import { useAtom, useAtomValue } from "jotai";
 import { useCallback, useState } from "react";
 import type { ReactElement } from "react";
 
-import { firstLevel } from "@/constants";
-import {
-  useGameAudio,
-  useGameSimulation,
-  useGameSimulationState,
-  useKeyboardInput,
-  useScoreSubmission,
-} from "@/hooks";
+import { useGameSession } from "@/hooks";
 import type { Difficulty } from "@/schema";
 import { difficultyAtom, leaderboardAtom, rendererKindAtom } from "@/stores";
 import { DifficultySelector } from "./difficulty-selector";
@@ -34,15 +27,8 @@ export function GameShell({
   const [difficulty, setDifficulty] = useAtom(difficultyAtom);
   const [rendererKind, setRendererKind] = useAtom(rendererKindAtom);
   const leaderboard = useAtomValue(leaderboardAtom);
-  const keyboard = useKeyboardInput();
-  const simulation = useGameSimulation(
-    firstLevel,
-    difficulty,
-    keyboard.inputRef,
-  );
-  const audio = useGameAudio(simulation);
-  useScoreSubmission(simulation);
-  const gameState = useGameSimulationState(simulation);
+  const { audio, gameState, keyboard, restartGame, simulation } =
+    useGameSession(difficulty);
   const [settingsOpen, setSettingsOpen] = useState(false);
 
   const selectDifficulty = useCallback(
@@ -52,11 +38,6 @@ export function GameShell({
     },
     [setDifficulty, simulation],
   );
-
-  const restartGame = useCallback((): void => {
-    keyboard.reset();
-    simulation.restart();
-  }, [keyboard, simulation]);
 
   return (
     <>

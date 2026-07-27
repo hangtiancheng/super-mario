@@ -11,6 +11,8 @@ export interface EnemyContactResult {
   wasHit: boolean;
 }
 
+const HORIZONTAL_CONTACT_MARGIN_PX = 16;
+
 export function resolveEnemyContacts(
   previousPlayer: Player,
   player: Player,
@@ -23,7 +25,13 @@ export function resolveEnemyContacts(
   let wasHit = false;
 
   for (const enemy of enemies) {
-    if (!couldCollideHorizontally(resolvedPlayer, enemy, 16)) {
+    if (
+      !couldCollideHorizontally(
+        resolvedPlayer,
+        enemy,
+        HORIZONTAL_CONTACT_MARGIN_PX,
+      )
+    ) {
       remainingEnemies.push(enemy);
     } else if (!intersects(resolvedPlayer, enemy)) {
       remainingEnemies.push(enemy);
@@ -36,7 +44,9 @@ export function resolveEnemyContacts(
       stompedCount += 1;
     } else {
       remainingEnemies.push(enemy);
-      wasHit = true;
+      if (resolvedPlayer.invulnerableMs <= 0) {
+        wasHit = true;
+      }
     }
   }
 
@@ -45,7 +55,10 @@ export function resolveEnemyContacts(
     player: resolvedPlayer,
     stompedCount,
     stompedAt,
-    wasHit,
+    // A clean stomp grants same-frame grace: the bounce flips velocity
+    // upward, which would otherwise turn an overlapping second enemy
+    // into an unfair hit within the same frame.
+    wasHit: wasHit && stompedCount === 0,
   };
 }
 

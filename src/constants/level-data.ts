@@ -170,7 +170,6 @@ const rawFirstLevel: unknown = {
       waveHeight: 30,
     },
   ],
-  goal: { id: "finish-gate", x: 2_118, y: 410, width: 54, height: 90 },
 };
 
 export const firstLevel: LevelData = levelDataSchema.parse(rawFirstLevel);
