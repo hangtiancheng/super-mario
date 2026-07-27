@@ -6,7 +6,7 @@ import { GameLayout } from "@/routes";
 export function HomePage(): ReactElement {
   return (
     <GameLayout presentation="standard">
-      <GameShell routeMode="fullscreen" />
+      <GameShell />
     </GameLayout>
   );
 }

@@ -15,15 +15,7 @@ import { PlayerNameField } from "./player-name-field";
 import { RendererSelector } from "./renderer-selector";
 import { TouchControls } from "./touch-controls";
 
-export type GameShellRouteMode = "fullscreen" | "home";
-
-interface GameShellProps {
-  routeMode?: GameShellRouteMode;
-}
-
-export function GameShell({
-  routeMode = "fullscreen",
-}: GameShellProps): ReactElement {
+export function GameShell(): ReactElement {
   const [difficulty, setDifficulty] = useAtom(difficultyAtom);
   const [rendererKind, setRendererKind] = useAtom(rendererKindAtom);
   const leaderboard = useAtomValue(leaderboardAtom);
@@ -50,7 +42,7 @@ export function GameShell({
         simulation={simulation}
       />
       <div className="flex flex-wrap items-center gap-3">
-        <FullscreenControls routeMode={routeMode} />
+        <FullscreenControls />
         <button
           className="rounded-full border-4 border-slate-950 bg-amber-300 px-5 py-2 text-xs font-black tracking-[0.2em] text-slate-950 uppercase shadow-[5px_5px_0_rgb(15_23_42)]"
           onClick={(): void => setSettingsOpen((o) => !o)}
