@@ -19,9 +19,7 @@
     "playwright": "playwright install",
     "format": "prettier -w ./",
     "git:commit": "git add -A && git commit -m \"feat: Introduce new features\"",
-    "git:commit:ci": "git add -A && git commit -m \"ci: Deploy swifty-mario\"",
-    "git:push": "pnpm git:commit && git push origin main",
-    "git:push:ci": "pnpm git:commit:ci && git push origin main"
+    "git:push": "pnpm git:commit && git push origin main"
   },
   "license": "MIT",
   "dependencies": {
